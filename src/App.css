@@ -1,0 +1,30 @@
+.fondo {
+  background-color: #E3F4FC;
+}
+
+.der{
+  background-color: #133040;
+  border-top-right-radius: 1rem !important;
+  border-bottom-right-radius: 1rem !important;
+  border-bottom-left-radius: 2rem !important;
+}
+
+.izq {
+  border-top-left-radius: 1rem !important;
+  border-bottom-left-radius: 1rem !important;
+}
+
+.btn.calculate {
+  background-color: #DADB31 ;  
+}
+
+.btn.calculate:hover {
+  background-color: #c6cb2b !important; 
+  
+}
+
+.result-box {
+  background: #18394c;
+  border-radius: 1rem;
+  border-top: 2px solid #dadb31;
+}
