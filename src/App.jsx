@@ -93,7 +93,7 @@ function App() {
         
 
           {result !== null ?(
-            <div className='der text-white p-4 d-flex flex-column justify-content-center'>
+            <div className='der text-white p-4 d-flex flex-column justify-content-center h-100'>
             <h3>Your results</h3>
             <p>
               Your results are shown below based on the information you provided. To adjust the results, edit the form and click "calculate repayments" again.
