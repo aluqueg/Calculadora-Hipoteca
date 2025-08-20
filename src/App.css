@@ -28,3 +28,9 @@
   border-radius: 1rem;
   border-top: 2px solid #dadb31;
 }
+
+.main-box {
+  max-width: 900px;
+  width: 100%;
+}
+

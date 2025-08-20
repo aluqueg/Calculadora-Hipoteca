@@ -49,10 +49,10 @@ function App() {
   return (
     <>
       <Container fluid className='fondo vh-100 d-flex justify-content-center align-items-center'>
-      <Row className='w-50 g-0 align-items-stretch d-flex'>        
+      <Row className='main-box g-0 align-items-stretch'>        
 
-        <Col md={6}>
-        <div className='izq d-flex flex-column justify-content-start bg-white p-4 h-100'>
+        <Col xs={12} md={6}>
+        <div className='izq d-flex flex-column justify-content-start bg-white p-4'>
           <div className='d-flex justify-content-between align-items-center w-100 mb-4'>
             <h3>Mortgage Calculator</h3>
             <p className='text-danger mb-0' role='button' onClick={handleClear}>Clear all</p>
@@ -64,14 +64,14 @@ function App() {
 
           {!amount && <p className='text-danger'>{message}</p>}
 
-          <div className='d-flex gap-3'>
-            <div className='w-50'>
+          <Row className='g-3'>
+            <Col xs={12} md={6}>
               <MortgageTerm term={term} setTerm={setTerm} message={message}/>
-            </div>
-            <div className='w-50'>
+            </Col>
+            <Col xs={12} md={6}>
               <InterestRate interestRate={interestRate} setInterestRate={setInterestRate} message={message}/>
-            </div>
-          </div>
+            </Col>
+          </Row>
 
           <div className='w-100 mb-4'>
             <p>Mortgage Type</p>
@@ -89,11 +89,11 @@ function App() {
         </div>
         </Col>
 
-        <Col md={6}>        
+        <Col xs={12} md={6}>        
         
 
           {result !== null ?(
-            <div className='der text-white p-4 h-100 d-flex flex-column justify-content-center'>
+            <div className='der text-white p-4 d-flex flex-column justify-content-center'>
             <h3>Your results</h3>
             <p>
               Your results are shown below based on the information you provided. To adjust the results, edit the form and click "calculate repayments" again.
