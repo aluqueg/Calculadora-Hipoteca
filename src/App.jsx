@@ -48,7 +48,7 @@ function App() {
 
   return (
     <>
-      <Container fluid className='fondo vh-100 d-flex justify-content-center align-items-center'>
+      <Container fluid className='fondo vh-100'>
       <Row className='main-box g-0 align-items-stretch'>        
 
         <Col xs={12} md={6}>

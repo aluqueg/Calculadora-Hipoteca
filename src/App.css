@@ -1,5 +1,21 @@
 .fondo {
   background-color: #E3F4FC;
+  min-height: 100vh;
+  display: flex;
+}
+
+@media (min-width: 769px) {
+  .fondo {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .fondo {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 }
 
 .der{
@@ -23,6 +39,14 @@
   
 }
 
+@media (max-width: 768px) {
+  .btn.calculate {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+}
+
 .result-box {
   background: #18394c;
   border-radius: 1rem;
@@ -33,4 +57,3 @@
   max-width: 900px;
   width: 100%;
 }
-
