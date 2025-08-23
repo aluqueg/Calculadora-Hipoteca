@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-export const InterestRate = ({interestRate, setInterestRate, message}) => {
+export const InterestRate = ({interestRate, setInterestRate, message, messageNumber}) => {
   return (
             <>
     <p>Interest Rate</p>
@@ -17,6 +17,7 @@ export const InterestRate = ({interestRate, setInterestRate, message}) => {
         </InputGroup.Text>
       </InputGroup>
         {!interestRate && <p className='text-danger'>{message}</p>}
+        {isNaN(interestRate) && <p className='text-danger'>{messageNumber}</p>}
     </>
   )
 }

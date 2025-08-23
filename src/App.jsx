@@ -13,6 +13,7 @@ function App() {
   const [repaymentType, setRepaymentType] = useState('repayment');
   const [message, setMessage] = useState("");
   const [result, setResult] = useState(null);
+  const [messageNumber, setMessageNumber] = useState("");
 
   const handleCalculate = () => {
     if (!amount || !term || !interestRate) {
@@ -21,9 +22,17 @@ function App() {
     }else{
       setMessage(""); 
     }
+    
     const principal = Number(amount);
     const n = Number(term) * 12; // años a meses
     const r = Number(interestRate) / 100 / 12; // porcentaje a decimal y mensual
+
+    if (isNaN(principal) || isNaN(n) || isNaN(r)) {
+      setMessageNumber("Introduce valores numéricos válidos");
+      return;
+    } else {
+      setMessageNumber("");
+    }
 
     let cuota;
     if (repaymentType === 'repayment') {
@@ -33,7 +42,6 @@ function App() {
     }
 
     setResult(cuota);
-    console.log("Resultado de la cuota:", cuota);
     
   }
 
@@ -44,6 +52,7 @@ function App() {
     setRepaymentType('repayment');
     setMessage("");
     setResult(null);
+    setMessageNumber("");
   }
 
   return (
@@ -63,13 +72,14 @@ function App() {
           </div>
 
           {!amount && <p className='text-danger'>{message}</p>}
+          {isNaN(amount) && <p className='text-danger'>{messageNumber}</p>}
 
           <Row className='g-3'>
             <Col xs={12} md={6}>
-              <MortgageTerm term={term} setTerm={setTerm} message={message}/>
+              <MortgageTerm term={term} setTerm={setTerm} message={message} messageNumber={messageNumber}/>
             </Col>
             <Col xs={12} md={6}>
-              <InterestRate interestRate={interestRate} setInterestRate={setInterestRate} message={message}/>
+              <InterestRate interestRate={interestRate} setInterestRate={setInterestRate} message={message} messageNumber={messageNumber}/>
             </Col>
           </Row>
 
@@ -100,6 +110,7 @@ function App() {
             </p>
             <div className='result-box p-4 mt-4'>
             <p className='mb-2'>Monthly payment</p>
+            
             <p className='fw-bold' style={{ fontSize: '2.5rem', color: '#dadb31' }}>{result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} €
             </p>
             <hr style={{ borderColor: '#dadb31', opacity: 0.5 }} />

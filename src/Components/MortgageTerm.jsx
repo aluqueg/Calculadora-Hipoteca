@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-export const MortgageTerm = ({term, setTerm, message}) => {
+export const MortgageTerm = ({term, setTerm, message, messageNumber}) => {
   return (
         <>
     <p>Mortgage Term</p>
@@ -17,6 +17,7 @@ export const MortgageTerm = ({term, setTerm, message}) => {
         </InputGroup.Text>
       </InputGroup>
         {!term && <p className='text-danger'>{message}</p>}
+        {isNaN(term) && <p className='text-danger'>{messageNumber}</p>}
     </>
   )
 }
