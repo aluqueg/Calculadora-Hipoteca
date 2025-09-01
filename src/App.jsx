@@ -13,6 +13,7 @@ function App() {
   const [repaymentType, setRepaymentType] = useState('repayment');
   const [message, setMessage] = useState("");
   const [result, setResult] = useState(null);
+  const [totalRepay, setTotalRepay] = useState(null);
   const [messageNumber, setMessageNumber] = useState("");
 
       const principal = Number(amount);
@@ -35,13 +36,17 @@ function App() {
     }
 
     let cuota;
+    let total;
     if (repaymentType === 'repayment') {
       cuota = r === 0 ? principal / n : principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+      total = cuota * n;
     } else {
       cuota = principal * r; // Interés solo
+      total = (cuota * n) + principal;
     }
 
     setResult(cuota);
+    setTotalRepay(total);
     
   }
 
@@ -52,6 +57,7 @@ function App() {
     setRepaymentType('repayment');
     setMessage("");
     setResult(null);
+    setTotalRepay(null);
     setMessageNumber("");
   }
 
@@ -111,12 +117,13 @@ function App() {
             <div className='result-box p-4 mt-4'>
             <p className='mb-2'>Monthly payment</p>
             
-            <p className='fw-bold' style={{ fontSize: '2.5rem', color: '#dadb31' }}>{result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} €
+            <p className='fw-bold' style={{ fontSize: '2.5rem', color: '#dadb31' }}>
+              {result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} €
             </p>
             <hr style={{ borderColor: '#dadb31', opacity: 0.5 }} />
             <p className='mb-1'>Total you'll repay over the term</p>
             <p className='fw-bold' style={{ fontSize: '1.5rem', color: '#fff' }}>
-          {(repaymentType === 'repayment' ? result * n : (result * n) + principal).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} €
+          {(totalRepay).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} €
         </p>
             </div>
             </div>
