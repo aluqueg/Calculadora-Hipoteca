@@ -16,7 +16,7 @@ function App() {
   const [totalRepay, setTotalRepay] = useState(null);
   const [messageNumber, setMessageNumber] = useState("");
 
-      const principal = Number(amount);
+    const principal = Number(amount);
     const n = Number(term) * 12; // años a meses
     const r = Number(interestRate) / 100 / 12; // porcentaje a decimal y mensual
 
@@ -74,12 +74,8 @@ function App() {
           </div>
 
           <div className='w-100'>
-            <MortgageAmount amount={amount} setAmount={setAmount}/>
+            <MortgageAmount amount={amount} setAmount={setAmount} message={message} messageNumber={messageNumber}/>
           </div>
-
-          {!amount && <p className='text-danger'>{message}</p>}
-          {isNaN(amount) && <p className='text-danger'>{messageNumber}</p>}
-
           <Row className='g-3'>
             <Col xs={12} md={6}>
               <MortgageTerm term={term} setTerm={setTerm} message={message} messageNumber={messageNumber}/>

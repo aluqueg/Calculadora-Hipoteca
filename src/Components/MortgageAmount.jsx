@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-export const MortgageAmount = ({amount, setAmount}) => {
+export const MortgageAmount = ({amount, setAmount, message, messageNumber}) => {
   return (
     <>
     <p>Mortgage Amount</p>
@@ -16,6 +16,8 @@ export const MortgageAmount = ({amount, setAmount}) => {
           onChange={e => setAmount(e.target.value)}
         />
       </InputGroup>
+                {!amount && <p className='text-danger'>{message}</p>}
+          {isNaN(amount) && <p className='text-danger'>{messageNumber}</p>}
     </>
   )
 }
