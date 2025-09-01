@@ -15,6 +15,10 @@ function App() {
   const [result, setResult] = useState(null);
   const [messageNumber, setMessageNumber] = useState("");
 
+      const principal = Number(amount);
+    const n = Number(term) * 12; // años a meses
+    const r = Number(interestRate) / 100 / 12; // porcentaje a decimal y mensual
+
   const handleCalculate = () => {
     if (!amount || !term || !interestRate) {
       setMessage("Campo requerido");
@@ -22,10 +26,6 @@ function App() {
     }else{
       setMessage(""); 
     }
-    
-    const principal = Number(amount);
-    const n = Number(term) * 12; // años a meses
-    const r = Number(interestRate) / 100 / 12; // porcentaje a decimal y mensual
 
     if (isNaN(principal) || isNaN(n) || isNaN(r)) {
       setMessageNumber("Introduce valores numéricos válidos");
@@ -38,7 +38,7 @@ function App() {
     if (repaymentType === 'repayment') {
       cuota = r === 0 ? principal / n : principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
     } else {
-      cuota = principal / n; // Interés solo
+      cuota = principal * r; // Interés solo
     }
 
     setResult(cuota);
@@ -116,7 +116,7 @@ function App() {
             <hr style={{ borderColor: '#dadb31', opacity: 0.5 }} />
             <p className='mb-1'>Total you'll repay over the term</p>
             <p className='fw-bold' style={{ fontSize: '1.5rem', color: '#fff' }}>
-          {(result * Number(term) * 12).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} €
+          {(repaymentType === 'repayment' ? result * n : (result * n) + principal).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} €
         </p>
             </div>
             </div>
